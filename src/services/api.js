@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const api = axios.create({ baseURL: "http://localhost:8080/api" });
+const api = axios.create({
+  baseURL: "https://campus-backend-production-f3ce.up.railway.app/api",
+});
 
 export const getEvents = () => api.get("/events");
 export const createEvent = (data) => api.post("/events", data);
