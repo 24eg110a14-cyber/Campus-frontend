@@ -1,10 +1,100 @@
-body { font-family: Arial, sans-serif; margin: 0; background: #f4f6f9; }
-.navbar { display: flex; justify-content: space-between; align-items: center;
-  background: #1e3a8a; color: white; padding: 12px 24px; }
-.navbar a { color: white; margin-left: 18px; text-decoration: none; }
-.container { max-width: 1000px; margin: 24px auto; padding: 0 16px; }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
-.card { background: white; padding: 16px; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,.15); }
-.form { display: flex; flex-direction: column; gap: 12px; max-width: 480px; }
-.form input, .form textarea { padding: 10px; border: 1px solid #ccc; border-radius: 6px; }
-button { background: #1e3a8a; color: white; border: none; padding: 10px 14px; border-radius: 6px; cursor: pointer; }
+/* ===== Theme colors (change colors only here) ===== */
+:root {
+  --brand-red: #c8102e;
+  --brand-red-dark: #9e0b23;
+  --brand-dark: #1b1f3b;
+  --brand-bg: #f7f7fa;
+  --brand-text: #1b1f3b;
+}
+
+/* ===== Base ===== */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: var(--brand-bg);
+  color: var(--brand-text);
+}
+
+h1,
+h2,
+h3 {
+  color: var(--brand-dark);
+}
+
+/* ===== Top bar ===== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--brand-dark);
+  color: #ffffff;
+  padding: 12px 24px;
+  border-bottom: 4px solid var(--brand-red);
+}
+
+.navbar a {
+  color: #ffffff;
+  margin-left: 18px;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  color: var(--brand-red);
+}
+
+/* ===== Layout ===== */
+.container {
+  max-width: 1000px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+/* ===== Event cards ===== */
+.card {
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 10px;
+  border-top: 4px solid var(--brand-red);
+  box-shadow: 0 2px 8px rgba(27, 31, 59, 0.12);
+}
+
+/* ===== Form ===== */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 480px;
+}
+
+.form input,
+.form textarea {
+  padding: 10px;
+  border: 1px solid #c9cbd8;
+  border-radius: 6px;
+}
+
+.form input:focus,
+.form textarea:focus {
+  outline: 2px solid var(--brand-red);
+  border-color: var(--brand-red);
+}
+
+/* ===== Buttons ===== */
+button {
+  background: var(--brand-red);
+  color: #ffffff;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--brand-red-dark);
+}
