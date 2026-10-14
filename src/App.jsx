@@ -12,6 +12,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/events" element={<EventList />} />
         <Route path="/add" element={<AddEvent />} />
+        <Route path="/history" element={<EventList mode="history" />} />
       </Routes>
     </BrowserRouter>
   );
