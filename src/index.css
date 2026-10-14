@@ -133,6 +133,33 @@ h3 {
   color: #ffffff;
 }
 
+/* ===== Card actions (Share + Delete) ===== */
+.card-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.card-actions button {
+  margin-top: 0;
+}
+
+.card .share-btn {
+  background: var(--brand-dark);
+  color: #ffffff;
+  border: 1px solid var(--brand-dark);
+  padding: 12px 22px;
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.card .share-btn:hover {
+  background: var(--brand-red);
+  border-color: var(--brand-red);
+  color: #ffffff;
+}
+
 /* ===== Form (vertical, one field under another) ===== */
 .form {
   display: flex;
