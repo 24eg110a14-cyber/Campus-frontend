@@ -17,47 +17,6 @@ export default function EventList({ mode = "upcoming" }) {
     load();
   };
 
-  const handleShare = async (e) => {
-    const text =
-      `📢 ${e.title}\n` +
-      `${e.description}\n\n` +
-      `📍 Venue: ${e.venue}\n` +
-      `🗓 Date: ${new Date(e.eventDate).toLocaleString()}\n` +
-      `🎓 Organizer: ${e.organizer}\n` +
-      `👥 Capacity: ${e.capacity}\n\n` +
-      `Details: ${window.location.origin}/events`;
-
-    if (navigator.share) {
-      try {
-        // Try sharing the poster image along with the text
-        if (e.posterImage && navigator.canShare) {
-          try {
-            const blob = await (await fetch(e.posterImage)).blob();
-            const file = new File([blob], `${e.title}-poster.jpg`, {
-              type: blob.type || "image/jpeg",
-            });
-            if (navigator.canShare({ files: [file] })) {
-              await navigator.share({ title: e.title, text, files: [file] });
-              return;
-            }
-          } catch (err) {
-            // poster couldn't be fetched, fall through to text-only share
-          }
-        }
-        await navigator.share({ title: e.title, text });
-      } catch (err) {
-        // user cancelled the share sheet, ignore
-      }
-    } else {
-      try {
-        await navigator.clipboard.writeText(text);
-        alert("Event details copied! Paste it anywhere to share.");
-      } catch (err) {
-        alert("Sharing is not supported on this browser.");
-      }
-    }
-  };
-
   const now = new Date();
 
   const shown = events
@@ -110,13 +69,7 @@ export default function EventList({ mode = "upcoming" }) {
             <p><b>Date:</b> {new Date(e.eventDate).toLocaleString()}</p>
             <p><b>Organizer:</b> {e.organizer}</p>
             <p><b>Capacity:</b> {e.capacity}</p>
-
-            <div className="card-actions">
-              <button className="share-btn" onClick={() => handleShare(e)}>
-                Share
-              </button>
-              <button onClick={() => handleDelete(e.id)}>Delete</button>
-            </div>
+            <button onClick={() => handleDelete(e.id)}>Delete</button>
           </div>
         ))}
       </div>
