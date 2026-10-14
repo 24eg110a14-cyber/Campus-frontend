@@ -39,7 +39,28 @@ export default function EventList({ mode = "upcoming" }) {
         {shown.map((e) => (
           <div className={isHistory ? "card past" : "card"} key={e.id}>
             {e.posterImage && (
-              <img src={e.posterImage} alt={`${e.title} poster`} className="poster" />
+<img
+  src={e.posterImage}
+  alt={`${e.title} poster`}
+  className="poster"
+  style={{ cursor: "pointer" }}
+  onClick={() => {
+    if (e.posterImage) {
+      const img = new Image();
+      img.onload = () => {
+        const win = window.open("", "_blank");
+        if (win) {
+          win.document.write(
+            `<img src="${e.posterImage}" style="max-width:100%;height:auto;display:block;margin:auto" />`
+          );
+          win.document.close();
+        }
+      };
+      img.onerror = () => alert("Poster image could not be loaded.");
+      img.src = e.posterImage;
+    }
+  }}
+/>
             )}
             {isHistory && <span className="badge">Completed</span>}
             <h3>{e.title}</h3>
